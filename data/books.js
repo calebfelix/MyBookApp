@@ -9,5 +9,12 @@ export default [
     cover:
       "https://raw.githubusercontent.com/calebfelix/MyBookApp/master/covers/people-we-meet-on-vacation-1.jpg",
   },
-  // Add more books here
+  {
+  id: "book-2",
+  title: "It Ends with Us",
+  author: "Colleen Hoover",
+  description: "Lily Bloom has always worked hard for the life she wants. When she falls for the charming neurosurgeon Ryle Kincaid, everything seems perfect—until questions about his past and her own childhood re-emerge, testing her strength and love.",
+  url: "https://raw.githubusercontent.com/calebfelix/MyBookApp/master/books/It-Ends-with-Us.pdf",
+  cover: "https://raw.githubusercontent.com/calebfelix/MyBookApp/master/covers/It-Ends-With-Us.png"
+  }
 ];
