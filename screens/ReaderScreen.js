@@ -1,11 +1,10 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import { WebView } from "react-native-webview";
 
 export default function ReaderScreen({ route }) {
   const { url } = route.params;
 
-  // Wrap the PDF URL with Google Docs Viewer
   const viewerUrl = `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(
     url
   )}`;
@@ -14,11 +13,8 @@ export default function ReaderScreen({ route }) {
     <View style={styles.container}>
       <WebView
         source={{ uri: viewerUrl }}
-        style={styles.webview}
-        originWhitelist={["*"]}
-        useWebKit
-        allowsFullscreenVideo
-        javaScriptEnabled
+        style={styles.pdf}
+        startInLoadingState={true}
       />
     </View>
   );
@@ -29,7 +25,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
   },
-  webview: {
+  pdf: {
     flex: 1,
+    width: Dimensions.get("window").width,
   },
 });

@@ -1,35 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
   FlatList,
-  TouchableOpacity,
-  TextInput,
   Image,
+  TouchableOpacity,
   StyleSheet,
 } from "react-native";
+import books from "../data/books";
 import { useNavigation } from "@react-navigation/native";
 
-// ✅ Load books.json locally
-import booksData from "../data/books.json";
-
 export default function HomeScreen() {
-  const [searchText, setSearchText] = useState("");
   const navigation = useNavigation();
 
-  const filteredBooks = booksData.filter((book) =>
-    book.title.toLowerCase().includes(searchText.toLowerCase())
-  );
-
-  const renderBook = ({ item }) => (
+  const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.card}
       onPress={() => navigation.navigate("Reader", { url: item.url })}
     >
-      {item.cover && (
-        <Image source={{ uri: item.cover }} style={styles.coverImage} />
-      )}
-      <View style={styles.textContainer}>
+      <Image source={{ uri: item.cover }} style={styles.cover} />
+      <View style={styles.info}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.author}>{item.author}</Text>
         <Text style={styles.description} numberOfLines={2}>
@@ -41,18 +31,11 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        placeholder="Search books..."
-        placeholderTextColor="#888"
-        value={searchText}
-        onChangeText={setSearchText}
-        style={styles.searchBar}
-      />
       <FlatList
-        data={filteredBooks}
+        data={books}
         keyExtractor={(item) => item.id}
-        renderItem={renderBook}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        renderItem={renderItem}
+        contentContainerStyle={styles.list}
       />
     </View>
   );
@@ -60,36 +43,27 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
     flex: 1,
-    backgroundColor: "#121212",
+    backgroundColor: "#000",
   },
-  searchBar: {
+  list: {
     padding: 10,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: "#333",
-    backgroundColor: "#1e1e1e",
-    color: "#fff",
   },
   card: {
     flexDirection: "row",
     backgroundColor: "#1e1e1e",
     borderRadius: 10,
-    marginBottom: 12,
     padding: 10,
-    elevation: 2,
+    marginBottom: 10,
   },
-  coverImage: {
-    width: 60,
-    height: 90,
-    marginRight: 12,
+  cover: {
+    width: 80,
+    height: 120,
     borderRadius: 6,
   },
-  textContainer: {
+  info: {
     flex: 1,
-    justifyContent: "center",
+    marginLeft: 12,
   },
   title: {
     fontSize: 16,
@@ -98,10 +72,11 @@ const styles = StyleSheet.create({
   },
   author: {
     fontSize: 14,
-    color: "#aaa",
+    color: "#ccc",
+    marginBottom: 4,
   },
   description: {
     fontSize: 12,
-    color: "#ccc",
+    color: "#aaa",
   },
 });
