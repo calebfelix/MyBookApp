@@ -20,7 +20,7 @@ export default function HomeScreen() {
 
   useEffect(() => {
     fetch(
-      'https://raw.githubusercontent.com/calebfelix/MyBookApp/master/data/books.json'
+      'https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/data/books.json'
     )
       .then((res) => res.json())
       .then((data) => {
