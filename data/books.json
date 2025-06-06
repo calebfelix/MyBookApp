@@ -14,5 +14,13 @@
     "description": "Lily Bloom has always worked hard for the life she wants. When she falls for the charming neurosurgeon Ryle Kincaid, everything seems perfect—until questions about his past and her own childhood re-emerge, testing her strength and love.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/master/books/It-Ends-with-Us.pdf",
     "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/master/covers/It-Ends-With-Us.jpg"
+  },
+  {
+    "id": "book-3",
+    "title": "It Starts with Us",
+    "author": "Colleen Hoover",
+    "description": "In this sequel to *It Ends with Us*, Lily and Atlas try to navigate their second chance at true love while confronting challenges from their pasts. A heartfelt story of healing, hope, and new beginnings.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/master/books/It-Starts-With-Us.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/master/covers/It-Starts-With-Us.jpg"
   }
 ]
