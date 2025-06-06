@@ -2,7 +2,7 @@
   "expo": {
     "name": "MyBookApp",
     "slug": "MyBookApp",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/myBookApp.png",
     "userInterfaceStyle": "dark",
@@ -13,11 +13,11 @@
     },
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "2"
+      "buildNumber": "4"
     },
     "android": {
       "package": "com.calebfelix.mybookapp",
-      "versionCode": 3,
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/myBookApp.png",
         "backgroundColor": "#121212"

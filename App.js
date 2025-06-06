@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import HomeScreen from './screens/HomeScreen';
+import BookDetailsScreen from './screens/BookDetailsScreen';
 import ReaderScreen from './screens/ReaderScreen';
 
 const Stack = createNativeStackNavigator();
@@ -16,6 +17,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="BookDetails" component={BookDetailsScreen} />
             <Stack.Screen name="Reader" component={ReaderScreen} />
           </Stack.Navigator>
         </NavigationContainer>
