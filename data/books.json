@@ -22,5 +22,13 @@
     "description": "In this sequel to *It Ends with Us*, Lily and Atlas try to navigate their second chance at true love while confronting challenges from their pasts. A heartfelt story of healing, hope, and new beginnings.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/It-Starts-With-Us.pdf",
     "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/It-Starts-With-Us.jpg"
+  },
+  {
+    "id": "book-4",
+    "title": "My Fault",
+    "author": "Mercedes Ron",
+    "description": "Noah's life changes when she moves in with her mother's new husband and meets her rebellious stepbrother Nick. Sparks fly, secrets unravel, and emotions run wild in this intense, forbidden romance.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/My_Fault.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/My_Fault.jpg"
   }
 ]
