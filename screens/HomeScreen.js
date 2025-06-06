@@ -37,7 +37,8 @@ export default function HomeScreen() {
   const handleSearch = (text) => {
     setSearch(text);
     const filtered = books.filter((book) =>
-      book.title.toLowerCase().includes(text.toLowerCase())
+      book.title.toLowerCase().includes(text.toLowerCase()) ||
+      book.author.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredBooks(filtered);
   };
@@ -67,7 +68,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <TextInput
         style={styles.searchBar}
-        placeholder="Search books..."
+        placeholder="Search by title or author..."
         placeholderTextColor="#aaa"
         value={search}
         onChangeText={handleSearch}
