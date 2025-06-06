@@ -20,7 +20,7 @@ export default function HomeScreen() {
 
   useEffect(() => {
     fetch(
-      'https://raw.githubusercontent.com/calebfelix/MyBookApp/master/data/books.json'
+      'https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/data/books.json'
     )
       .then((res) => res.json())
       .then((data) => {
@@ -46,7 +46,7 @@ export default function HomeScreen() {
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.card}
-      onPress={() => navigation.navigate('Reader', { book: item })}
+      onPress={() => navigation.navigate('BookDetails', { book: item })}
     >
       <Image source={{ uri: item.cover }} style={styles.coverImage} />
       <View style={styles.textContainer}>
