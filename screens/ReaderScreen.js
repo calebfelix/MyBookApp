@@ -1,21 +1,17 @@
-import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
-import { WebView } from "react-native-webview";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 export default function ReaderScreen({ route }) {
-  const { url } = route.params;
+  const { book } = route.params;
 
-  const viewerUrl = `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(
-    url
+  const googleViewerUrl = `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(
+    book.url
   )}`;
 
   return (
     <View style={styles.container}>
-      <WebView
-        source={{ uri: viewerUrl }}
-        style={styles.pdf}
-        startInLoadingState={true}
-      />
+      <WebView source={{ uri: googleViewerUrl }} style={styles.webview} />
     </View>
   );
 }
@@ -23,10 +19,9 @@ export default function ReaderScreen({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: '#121212',
   },
-  pdf: {
+  webview: {
     flex: 1,
-    width: Dimensions.get("window").width,
   },
 });
