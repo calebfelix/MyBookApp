@@ -79,5 +79,104 @@
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Hopeless-Book-5.pdf",
     "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Hopeless-Book-5.jpg",
     "totalPages": 310
+  },
+  {
+    "id": "book-10",
+    "title": "The Sacred Search",
+    "author": "Gary Thomas",
+    "description": "A faith-based guide focusing on marrying for purpose, not just passion.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/The-Sacred-Search.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/The-Sacred-Search.jpg",
+    "totalPages": 232
+  },
+  {
+    "id": "book-11",
+    "title": "Gone Girl",
+    "author": "Gillian Flynn",
+    "description": "A psychological thriller about a missing wife and a marriage full of secrets.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Gone-Girl.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Gone-Girl.jpg",
+    "totalPages": 476
+  },
+  {
+    "id": "book-12",
+    "title": "Harry Potter: The Complete Collection",
+    "author": "J.K. Rowling",
+    "description": "The full saga of a young wizard's journey through magic, friendship, and destiny.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Harrypotter-The-Complete-Collection.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Harrypotter-The-Complete-Collection.jpg",
+    "totalPages": 3623
+  },
+  {
+    "id": "book-13",
+    "title": "November 9",
+    "author": "Colleen Hoover",
+    "description": "A love story that unfolds one day each year, filled with emotion and twists.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/November-9.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/November-9.jpg",
+    "totalPages": 297
+  },
+  {
+    "id": "book-14",
+    "title": "Our Fault",
+    "author": "Mercedes Ron",
+    "description": "A YA romance full of drama, secrets, and emotional intensity.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Our-Fault.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Our-Fault.jpg",
+    "totalPages": 456
+  },
+  {
+    "id": "book-15",
+    "title": "Your Fault",
+    "author": "Mercedes Ron",
+    "description": "The emotional continuation of a passionate and troubled teen romance.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Your-Fault.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Your-Fault.jpg",
+    "totalPages": 414
+  },
+  {
+    "id": "book-16",
+    "title": "The Girl on the Train",
+    "author": "Paula Hawkins",
+    "description": "A woman’s daily commute reveals a haunting mystery about love and deception.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/The-Girl-On-The-Train.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/The-Girl-On-The-Train.jpg",
+    "totalPages": 261
+  },
+  {
+    "id": "book-17",
+    "title": "Verity",
+    "author": "Colleen Hoover",
+    "description": "A chilling thriller where fiction and reality blur in dangerous ways.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Verity.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Verity.jpg",
+    "totalPages": 223
+  },
+  {
+    "id": "book-18",
+    "title": "Watching You",
+    "author": "Lisa Jewell",
+    "description": "A neighborhood mystery filled with secrets, lies, and shocking twists.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Watching-You.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Watching-You.jpg",
+    "totalPages": 308
+  },
+  {
+    "id": "book-19",
+    "title": "We Were Liars",
+    "author": "E. Lockhart",
+    "description": "A suspenseful tale of wealth, lies, and tragedy on a private island.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/We-were-Liars.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/We-were-Liars.jpg",
+    "totalPages": 246
+  },
+  {
+    "id": "book-20",
+    "title": "Where the Crawdads Sing",
+    "author": "Delia Owens",
+    "description": "A coming-of-age mystery about a marsh girl tangled in a murder case.",
+    "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Where-The-Crawdads-Sing.pdf",
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Where-The-Crawdads-Sing.jpg",
+    "totalPages": 327
   }
 ]
