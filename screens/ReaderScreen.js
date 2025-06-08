@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -6,75 +6,81 @@ import {
   TouchableOpacity,
   Alert,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import Pdf from 'react-native-pdf';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RNFS from 'react-native-fs';
+import Slider from '@react-native-community/slider';
 
 export default function ReaderScreen({ route }) {
   const { book } = route.params;
-  const pdfRef = useRef(null);
-  const mountedRef = useRef(true);
-
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalPages, setTotalPages] = useState(book.totalPages || 0);
   const [pdfPath, setPdfPath] = useState(null);
   const [loading, setLoading] = useState(true);
   const [nightMode, setNightMode] = useState(true);
+  const [renderPage, setRenderPage] = useState(1);
   const [initialPageSet, setInitialPageSet] = useState(false);
 
-  useEffect(() => {
-    mountedRef.current = true;
+  const sliderDragging = useRef(false);
+  const storageKey = `${book.id}-lastPage`;
 
-    const load = async () => {
+  useEffect(() => {
+    const loadPdf = async () => {
       const path = `${RNFS.DocumentDirectoryPath}/${book.id}.pdf`;
       try {
         const exists = await RNFS.exists(path);
         if (!exists) {
-          setLoading(true);
           await RNFS.downloadFile({ fromUrl: book.url, toFile: path }).promise;
         }
-        if (mountedRef.current) {
-          setPdfPath(path);
-        }
+        setPdfPath(path);
       } catch (e) {
         Alert.alert('Download failed', e.message);
       } finally {
-        if (mountedRef.current) {
-          setLoading(false);
-        }
+        setLoading(false);
       }
     };
 
-    load();
+    loadPdf();
+  }, [book.id, book.url]);
 
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
-
-  const onLoadComplete = async (numPages) => {
-    setTotalPages(numPages);
-
-    try {
-      const saved = await AsyncStorage.getItem(`${book.id}-lastPage`);
-      if (saved && !initialPageSet && pdfRef.current) {
-        const parsed = parseInt(saved, 10);
-        setTimeout(() => {
-          pdfRef.current.setPage(parsed);
+  const onLoadComplete = async (numberOfPages) => {
+    setTotalPages(numberOfPages);
+    if (!initialPageSet) {
+      try {
+        const saved = await AsyncStorage.getItem(storageKey);
+        if (saved) {
+          const parsed = parseInt(saved, 10);
           setPage(parsed);
-          setInitialPageSet(true);
-        }, 300);
+          setRenderPage(parsed);
+        }
+      } catch {
+        // Ignore
       }
-    } catch (e) {
-      // Silent fail
+      setInitialPageSet(true);
     }
   };
 
   const onPageChanged = async (pageNumber) => {
-    setPage(pageNumber);
-    await AsyncStorage.setItem(`${book.id}-lastPage`, pageNumber.toString());
+    if (!sliderDragging.current) {
+      setPage(pageNumber);
+      await AsyncStorage.setItem(storageKey, pageNumber.toString());
+    }
+  };
+
+  const onSliderValueChange = (value) => {
+    sliderDragging.current = true;
+    setPage(Math.round(value));
+  };
+
+  const onSliderComplete = (value) => {
+    const pageNum = Math.round(value);
+    sliderDragging.current = false;
+    setPage(pageNum);
+    setRenderPage(pageNum);
+    AsyncStorage.setItem(storageKey, pageNum.toString());
   };
 
   if (loading || !pdfPath) {
@@ -104,21 +110,41 @@ export default function ReaderScreen({ route }) {
       </View>
 
       <Pdf
-        ref={pdfRef}
+        key={`${pdfPath}-${renderPage}`}
         source={{ uri: `file://${pdfPath}` }}
+        page={renderPage}
         onLoadComplete={onLoadComplete}
         onPageChanged={onPageChanged}
-        onError={(error) => {
-          Alert.alert('PDF Error', error.message);
-        }}
+        onError={(error) => Alert.alert('PDF Error', error.message)}
         style={styles.pdf}
         enableAnnotationRendering
         enablePaging
+        fitPolicy={0}
+        horizontal
       />
 
-      <Text style={[styles.pageInfo, nightMode && styles.darkText]}>
-        Page {page}
-      </Text>
+      <View
+        style={[
+          styles.pageControl,
+          { backgroundColor: nightMode ? '#222' : '#eee' },
+        ]}
+      >
+        <Text style={[styles.pageInfo, { color: nightMode ? '#fff' : '#000' }]}>
+          Page {page}{totalPages > 0 ? ` / ${totalPages}` : ''}
+        </Text>
+        <Slider
+          style={styles.slider}
+          minimumValue={1}
+          maximumValue={totalPages > 0 ? totalPages : 10}
+          step={1}
+          value={page}
+          minimumTrackTintColor="#ff6b6b"
+          maximumTrackTintColor={nightMode ? '#555' : '#ccc'}
+          thumbTintColor="#ff6b6b"
+          onValueChange={onSliderValueChange}
+          onSlidingComplete={onSliderComplete}
+        />
+      </View>
     </View>
   );
 }
@@ -135,7 +161,23 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'space-between',
   },
-  pdf: { flex: 1, margin: 10 },
-  pageInfo: { textAlign: 'center', padding: 8, fontSize: 14 },
+  pdf: {
+    flex: 1,
+    margin: 10,
+    marginBottom: 0,
+  },
+  pageControl: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 40,
+  },
+  pageInfo: {
+    fontSize: 14,
+    marginRight: 10,
+  },
+  slider: {
+    flex: 1,
+  },
   loadingText: { marginTop: 10, fontSize: 16, color: '#000' },
 });
