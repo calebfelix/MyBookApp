@@ -5,7 +5,8 @@
     "author": "Emily Henry",
     "description": "Poppy and Alex are opposites who vacation together every summer. One trip ruins everything. Can one last getaway fix what was broken?",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/People-We-Meet-on-Vacation-Emily-Henry-Z-Library.pdf",
-    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/people-we-meet-on-vacation-1.jpg"
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/people-we-meet-on-vacation-1.jpg",
+    "totalPages": 249
   },
   {
     "id": "book-2",
@@ -13,7 +14,8 @@
     "author": "Colleen Hoover",
     "description": "Lily Bloom has always worked hard for the life she wants. When she falls for the charming neurosurgeon Ryle Kincaid, everything seems perfect—until questions about his past and her own childhood re-emerge, testing her strength and love.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/It-Ends-with-Us.pdf",
-    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/It-Ends-With-Us.jpg"
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/It-Ends-With-Us.jpg",
+    "totalPages": 303
   },
   {
     "id": "book-3",
@@ -21,7 +23,8 @@
     "author": "Colleen Hoover",
     "description": "In this sequel to *It Ends with Us*, Lily and Atlas try to navigate their second chance at true love while confronting challenges from their pasts. A heartfelt story of healing, hope, and new beginnings.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/It-Starts-With-Us.pdf",
-    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/It-Starts-With-Us.jpg"
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/It-Starts-With-Us.jpg",
+    "totalPages": 250
   },
   {
     "id": "book-4",
@@ -29,7 +32,8 @@
     "author": "Mercedes Ron",
     "description": "Noah's life changes when she moves in with her mother's new husband and meets her rebellious stepbrother Nick. Sparks fly, secrets unravel, and emotions run wild in this intense, forbidden romance.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/My_Fault.pdf",
-    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/My_Fault.jpg"
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/My_Fault.jpg",
+    "totalPages": 423
   },
   {
     "id": "book-5",
@@ -37,7 +41,8 @@
     "author": "Elsie Silver",
     "description": "Rhett Eaton, a rodeo legend, is forced to lay low after a scandal—and his publicist’s daughter is the one tasked with keeping him out of trouble. Sparks fly in this opposites-attract romance.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Flawless-Book-1.pdf",
-    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Flawless-Book-1.jpg"
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Flawless-Book-1.jpg",
+    "totalPages": 305
   },
   {
     "id": "book-6",
@@ -45,7 +50,8 @@
     "author": "Elsie Silver",
     "description": "Cade Eaton is a single dad who hires Willa, a city girl with no ranching experience, to be his nanny. Their chemistry makes Heartless a small-town romance with a big heart.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Heartless-Book-2.pdf",
-    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Heartless-Book-2.jpg"
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Heartless-Book-2.jpg",
+    "totalPages": 314
   },
   {
     "id": "book-7",
@@ -53,7 +59,8 @@
     "author": "Elsie Silver",
     "description": "Jasper Gervais, a hockey star with a wild past, reunites with his childhood best friend, Sloane. When a spontaneous road trip turns into something more, their shared history brings unexpected love.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Powerless-Book-3.pdf",
-    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Powerless-Book-3.jpg"
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Powerless-Book-3.jpg",
+    "totalPages": 339
   },
   {
     "id": "book-8",
@@ -61,7 +68,8 @@
     "author": "Elsie Silver",
     "description": "Theo, the youngest Eaton brother, finds himself entangled with Summer, a woman who’s always been off-limits. A steamy and heartfelt romance that tests their boundaries.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Reckless-Book-4.pdf",
-    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Reckless-Book-4.jpg"
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Reckless-Book-4.jpg",
+    "totalPages": 374
   },
   {
     "id": "book-9",
@@ -69,6 +77,7 @@
     "author": "Elsie Silver",
     "description": "The final Chestnut Springs book brings it all home. A grumpy/sunshine love story filled with vulnerability, redemption, and the slowest of slow burns.",
     "url": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/books/Hopeless-Book-5.pdf",
-    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Hopeless-Book-5.jpg"
+    "cover": "https://raw.githubusercontent.com/calebfelix/MyBookApp/storage/covers/Hopeless-Book-5.jpg",
+    "totalPages": 310
   }
 ]
