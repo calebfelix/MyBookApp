@@ -13,7 +13,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "5"
+      "buildNumber": "5",
+      "bundleIdentifier": "com.calebfelix.mybookapp"
     },
     "android": {
       "package": "com.calebfelix.mybookapp",
