@@ -1,9 +1,29 @@
 // screens/BookDetailsScreen.js
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Alert, ActivityIndicator } from 'react-native';
+import RNFS from 'react-native-fs';
 
 export default function BookDetailsScreen({ route, navigation }) {
   const { book } = route.params;
+  const [downloading, setDownloading] = useState(false);
+  const [pdfPath, setPdfPath] = useState(null);
+
+  const downloadPdf = async () => {
+    const path = `${RNFS.DocumentDirectoryPath}/${book.id}.pdf`;
+    setDownloading(true);
+    try {
+      const exists = await RNFS.exists(path);
+      if (!exists) {
+        await RNFS.downloadFile({ fromUrl: book.url, toFile: path }).promise;
+      }
+      setPdfPath(path);
+      navigation.navigate('Reader', { book, pdfPath: path });
+    } catch (e) {
+      Alert.alert('Download failed', e.message);
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -11,11 +31,17 @@ export default function BookDetailsScreen({ route, navigation }) {
       <Text style={styles.title}>{book.title}</Text>
       <Text style={styles.author}>by {book.author}</Text>
       <Text style={styles.description}>{book.description}</Text>
+
       <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Reader', { book })}
+        style={[styles.button, downloading && { backgroundColor: '#999' }]}
+        onPress={downloadPdf}
+        disabled={downloading}
       >
-        <Text style={styles.buttonText}>Start Reading</Text>
+        {downloading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <Text style={styles.buttonText}>Start Reading</Text>
+        )}
       </TouchableOpacity>
     </ScrollView>
   );

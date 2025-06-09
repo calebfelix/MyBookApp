@@ -1,3 +1,4 @@
+// screens/ReaderScreen.js
 import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
@@ -9,24 +10,22 @@ import {
   Modal,
   TextInput,
   FlatList,
-  Platform,
 } from 'react-native';
 import Pdf from 'react-native-pdf';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import RNFS from 'react-native-fs';
 import Slider from '@react-native-community/slider';
 
 export default function ReaderScreen({ route }) {
-  const { book } = route.params;
+  const { book, pdfPath } = route.params; // receive pdfPath from BookDetailsScreen
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(book.totalPages || 0);
-  const [pdfPath, setPdfPath] = useState(null);
   const [loading, setLoading] = useState(true);
   const [nightMode, setNightMode] = useState(true);
   const [renderPage, setRenderPage] = useState(1);
   const [initialPageSet, setInitialPageSet] = useState(false);
 
+  // Bookmarks and slider refs etc.
   const [bookmarkModalVisible, setBookmarkModalVisible] = useState(false);
   const [bookmarkListVisible, setBookmarkListVisible] = useState(false);
   const [bookmarkNote, setBookmarkNote] = useState('');
@@ -37,21 +36,6 @@ export default function ReaderScreen({ route }) {
   const bookmarkKey = `${book.id}-bookmarks`;
 
   useEffect(() => {
-    const loadPdf = async () => {
-      const path = `${RNFS.DocumentDirectoryPath}/${book.id}.pdf`;
-      try {
-        const exists = await RNFS.exists(path);
-        if (!exists) {
-          await RNFS.downloadFile({ fromUrl: book.url, toFile: path }).promise;
-        }
-        setPdfPath(path);
-      } catch (e) {
-        Alert.alert('Download failed', e.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     const loadBookmarks = async () => {
       const saved = await AsyncStorage.getItem(bookmarkKey);
       if (saved) {
@@ -59,9 +43,13 @@ export default function ReaderScreen({ route }) {
       }
     };
 
-    loadPdf();
     loadBookmarks();
-  }, [book.id, book.url]);
+
+    // Once pdfPath is set, loading is done
+    if (pdfPath) {
+      setLoading(false);
+    }
+  }, [book.id, bookmarkKey, pdfPath]);
 
   const onLoadComplete = async (numberOfPages) => {
     setTotalPages(numberOfPages);
@@ -100,7 +88,7 @@ export default function ReaderScreen({ route }) {
 
   const addBookmark = async () => {
     if (!bookmarkNote.trim()) {
-      Alert.alert("Note Required", "Please enter a note for the bookmark.");
+      Alert.alert('Note Required', 'Please enter a note for the bookmark.');
       return;
     }
 
@@ -120,13 +108,13 @@ export default function ReaderScreen({ route }) {
 
   const deleteBookmark = async (index) => {
     Alert.alert(
-      "Delete Bookmark",
-      "Are you sure you want to delete this bookmark?",
+      'Delete Bookmark',
+      'Are you sure you want to delete this bookmark?',
       [
-        { text: "Cancel", style: "cancel" },
+        { text: 'Cancel', style: 'cancel' },
         {
-          text: "Delete",
-          style: "destructive",
+          text: 'Delete',
+          style: 'destructive',
           onPress: async () => {
             const updated = bookmarks.filter((_, i) => i !== index);
             setBookmarks(updated);
@@ -141,9 +129,7 @@ export default function ReaderScreen({ route }) {
     return (
       <View style={[styles.container, nightMode && styles.darkBackground, styles.center]}>
         <ActivityIndicator size="large" color="#ff6b6b" />
-        <Text style={[styles.loadingText, nightMode && styles.darkText]}>
-          Loading PDF...
-        </Text>
+        <Text style={[styles.loadingText, nightMode && styles.darkText]}>Loading PDF...</Text>
       </View>
     );
   }
@@ -187,7 +173,8 @@ export default function ReaderScreen({ route }) {
       {/* Page Info & Slider */}
       <View style={[styles.pageControl, { backgroundColor: nightMode ? '#222' : '#eee' }]}>
         <Text style={[styles.pageInfo, { color: nightMode ? '#fff' : '#000', textAlign: 'center' }]}>
-          Page {page}{totalPages > 0 ? ` / ${totalPages}` : ''}
+          Page {page}
+          {totalPages > 0 ? ` / ${totalPages}` : ''}
         </Text>
         <Slider
           style={styles.slider}
@@ -204,10 +191,7 @@ export default function ReaderScreen({ route }) {
       </View>
 
       {/* Floating Bookmark Button */}
-      <TouchableOpacity
-        onPress={() => setBookmarkModalVisible(true)}
-        style={styles.floatingButton}
-      >
+      <TouchableOpacity onPress={() => setBookmarkModalVisible(true)} style={styles.floatingButton}>
         <Icon name="bookmark-plus" size={28} color="#fff" />
       </TouchableOpacity>
 
@@ -274,6 +258,7 @@ export default function ReaderScreen({ route }) {
   );
 }
 
+// Paste your styles here (same as before)
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
   darkBackground: { backgroundColor: '#121212' },
